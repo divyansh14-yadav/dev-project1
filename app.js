@@ -20,7 +20,7 @@ app.use(upload.fields([{
 }]))
 
 // router
-app.use("/api/v1", indexrouter)
+app.use("/api", indexrouter)
 
 
 app.listen(3000)
