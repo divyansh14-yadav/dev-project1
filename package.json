@@ -32,7 +32,6 @@
     "multi-part": "^4.0.0",
     "multipart": "^0.1.5",
     "nodemailer": "^6.9.1",
-    "nodemon": "^2.0.20",
     "npm": "^9.4.2"
   }
 }
