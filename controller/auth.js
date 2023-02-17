@@ -5,8 +5,11 @@ import Jwt  from "jsonwebtoken";
 import bcrypt from 'bcrypt'
 import nodemailer from 'nodemailer';
 import { v2 as cloudinary } from 'cloudinary'
+import upload from "../middleware/image.js";
+import * as path from 'path'
+import multer from 'multer';
 
-const usercontroller=express.Router();
+const authcontroller=express.Router();
 
 // cloudnary image env 
 cloudinary.config({ 
@@ -37,9 +40,9 @@ const userRegister= async(req,res)=>{
 
     const image = req.files.pp[0].path
     const identity = req.files.banner[0].path;
-    
+
       const result = await cloudinary.uploader.upload(image)
-      const results = await cloudinary.uploader.upload(identity)
+      // const results = await cloudinary.uploader.upload(identity)
 
        const hashedPassword = await bcrypt.hash(req.body.password,10);       
        const password=hashedPassword
@@ -53,8 +56,9 @@ const userRegister= async(req,res)=>{
                try {
       
           const users=new User({
-            username,email,password,image:result.secure_url,identity:results.secure_url,
+            username,email,password,image:result.secure_url
           })
+          
       console.log(users)
  
       let mailOptions = {
@@ -131,4 +135,4 @@ const userLogin=async(req,res)=>{
     
 }
 
-export default{ userRegister ,userLogin}
+export default{ authcontroller ,userRegister ,userLogin}

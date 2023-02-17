@@ -2,6 +2,7 @@ import express from "express";
 import usercontoller from "../controller/user.js";
 import authcontoller from '../controller/auth.js'
 import verifytoken from "../middleware/auth.js";
+import upload from "../middleware/image.js";
 
 const indexrouter = express.Router();
 

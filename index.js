@@ -2,28 +2,30 @@ import express from 'express';
 import * as path from 'path';
 import indexrouter from './routes/index.js';
 import upload from './middleware/image.js';
+import multer from 'multer';
+import bodyParser from 'body-parser'
 
-const app = express()
+const index = express()
 
 // middleware 
-app.use(express.json());
+index.use(express.json());
 
-app.use(express.urlencoded({ extended: true }));
+index.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join('./upload/images')));
+index.use(express.static(path.join('./upload/images')));
 
 // FOR MULTIPLE FILES IN FORM DATA WE USE UPLOAD.FIELDS
-app.use(upload.fields([{
+index.use(upload.fields([{
     name: 'pp', maxCount: 1
 }, {
     name: 'banner', maxCount: 1
 }]))
 
 // router
-app.use("/api", indexrouter)
+index.use("/api/v1", indexrouter)
 
 
-app.listen(3000)
+index.listen(3000)
 
 console.log("http://localhost:3000");
 
