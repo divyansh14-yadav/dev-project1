@@ -42,7 +42,7 @@ const userRegister= async(req,res)=>{
     const identity = req.files.banner[0].path;
 
       const result = await cloudinary.uploader.upload(image)
-      // const results = await cloudinary.uploader.upload(identity)
+      const results = await cloudinary.uploader.upload(identity)
 
        const hashedPassword = await bcrypt.hash(req.body.password,10);       
        const password=hashedPassword
@@ -56,7 +56,7 @@ const userRegister= async(req,res)=>{
                try {
       
           const users=new User({
-            username,email,password,image:result.secure_url
+            username,email,password,image:result.secure_url,identity:results.secure_url
           })
           
       console.log(users)
