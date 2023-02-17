@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "app.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+      {
+        "src": "/api/.*",
+        "methods": ["GET", "POST", "PUT", "DELETE"],
+        "dest": "app.js"
+      }
+    ],
+    "env": {
+      "MONGO_DB": "mongodb+srv://crud:crud@cluster0.bsgrjui.mongodb.net/register?retryWrites=true&w=majority"
+    }
+  }

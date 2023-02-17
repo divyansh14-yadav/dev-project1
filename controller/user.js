@@ -47,8 +47,6 @@ const userpost = async (req, res) => {
   }
 }
 
-
-
 // get method for all data
 
 const userget = async (req, res) => {

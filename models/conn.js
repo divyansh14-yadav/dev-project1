@@ -4,7 +4,6 @@ dotenv.config()
 
 const url=process.env.MONGO_DB
 
-
 mongoose.set('strictQuery',true); // for mongoose warning remove
 
 mongoose.connect(process.env.MONGO_DB)
@@ -12,7 +11,7 @@ mongoose.connect(process.env.MONGO_DB)
 
     console.log("connected to mongodb");
 
-}).catch(()=>{
+}).catch((err)=>{
 
     console.log("err");
 

@@ -2,7 +2,6 @@ import express from 'express';
 import * as path from 'path';
 import indexrouter from './routes/index.js';
 import upload from './middleware/image.js';
-import mongoose from 'mongoose';
 
 const app = express()
 
